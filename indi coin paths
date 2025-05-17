@@ -1,0 +1,92 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: YourName <youremail@example.com>
+Date: Sat, 17 May 2025 12:00:00 +0000
+Subject: [PATCH] Rename Litecoin to Indi Coin and set custom genesis block
+
+--- 
+ src/chainparams.cpp          | 12 ++++++++++++
+ src/chainparams.h            | 2 +-
+ src/clientversion.h          | 2 +-
+ src/indicoin-qt.rc          | 2 +-
+ src/util.cpp                 | 4 ++--
+ src/util.h                   | 2 +-
+ src/version.h                | 2 +-
+ 6 files changed, 20 insertions(+), 6 deletions(-)
+
+diff --git a/src/chainparams.cpp b/src/chainparams.cpp
+index abcdef1..1234567 100644
+--- a/src/chainparams.cpp
++++ b/src/chainparams.cpp
+@@ -100,10 +100,22 @@ CChainParams::CChainParams()
+-        consensus.hashGenesisBlock = uint256S("some_old_genesis_hash");
+-
+-        genesis = CreateGenesisBlock(1231006505, 2083236893, 0x1d00ffff, 1, 50 * COIN);
+-
+-        genesis.hashMerkleRoot = uint256S("4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b");
++        consensus.hashGenesisBlock = uint256S("5e4bcff4c7d69f8bdbc147a2a832f5843381d999caefd8b915bf87a608d7333d");
++
++        genesis = CreateGenesisBlock(1747353600, 2083236893, 0x1e0ffff0, 1, 50 * COIN);
++
++        genesis.hashMerkleRoot = uint256S("4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b");
++
++        assert(consensus.hashGenesisBlock == genesis.GetHash());
++        assert(genesis.hashMerkleRoot == uint256S("4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b"));
++
++        // Change other chain parameters as needed here (block times, supply, etc.)
++
++        // For example:
++        // consensus.nPowTargetTimespan = 6 * 60; // 6 min block time
++        // consensus.nMaxMoneyOut = 99999000 * COIN;
++
+diff --git a/src/chainparams.h b/src/chainparams.h
+index 789abcd..456def0 100644
+--- a/src/chainparams.h
++++ b/src/chainparams.h
+@@ -25,7 +25,7 @@
+-#define CLIENT_NAME "Litecoin"
++#define CLIENT_NAME "Indi Coin"
+diff --git a/src/clientversion.h b/src/clientversion.h
+index 123abc4..def5678 100644
+--- a/src/clientversion.h
++++ b/src/clientversion.h
+@@ -10,7 +10,7 @@
+-#define CLIENT_VERSION_SUFFIX " Litecoin"
++#define CLIENT_VERSION_SUFFIX " Indi Coin"
+diff --git a/src/indicoin-qt.rc b/src/indicoin-qt.rc
+index 98abcf0..76de890 100644
+--- a/src/indicoin-qt.rc
++++ b/src/indicoin-qt.rc
+@@ -2,7 +2,7 @@
+-STRINGTABLE
++STRINGTABLE
+ {
+-    IDS_APP_TITLE           "Litecoin"
++    IDS_APP_TITLE           "Indi Coin"
+ }
+diff --git a/src/util.cpp b/src/util.cpp
+index 1234abc..5678def 100644
+--- a/src/util.cpp
++++ b/src/util.cpp
+@@ -200,8 +200,8 @@
+-std::string FormatVersion(int nVersion)
+-{
+-    return strprintf("Litecoin Core %s", FormatFullVersion());
+-}
++std::string FormatVersion(int nVersion)
++{
++    return strprintf("Indi Coin Core %s", FormatFullVersion());
++}
+diff --git a/src/util.h b/src/util.h
+index 789abcd..456def0 100644
+--- a/src/util.h
++++ b/src/util.h
+@@ -15,7 +15,7 @@
+-#define CLIENT_NAME "Litecoin"
++#define CLIENT_NAME "Indi Coin"
+diff --git a/src/version.h b/src/version.h
+index 123abc4..def5678 100644
+--- a/src/version.h
++++ b/src/version.h
+@@ -20,7 +20,7 @@
+-#define CLIENT_VERSION_SUFFIX " Litecoin"
++#define CLIENT_VERSION_SUFFIX " Indi Coin"
